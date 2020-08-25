@@ -1,5 +1,7 @@
 from morse_dict import MORSE_2_ASCII
 
+# Referenced https://www.geeksforgeeks.org/largest-substring-with-same-characters/
+
 
 def decode_bits(bits):
     bits_morsecode = ""
@@ -11,22 +13,20 @@ def decode_bits(bits):
             highest = max(highest, frequency)
             frequency = 1
     highest = max(highest, frequency)
+    freq = highest // 7
 
-    print(highest)
-    return highest
+    for x in range(len(bits)):
+        if bits[x:x + (3 * freq)] == "111" * freq:
+            bits_morsecode += "-"
+        elif bits[x] == "1":
+            bits_morsecode += "."
+        elif bits[x] == "0":
+            bits_morsecode += " "
 
-    # for x in range(len(bits)):
-    #     if bits[x:x+3] == "111":
-    #         bits_morsecode += "-"
-    #     elif bits[x] == "1":
-    #         bits_morsecode += "."
-    #     elif bits[x] == "0":
-    #         bits_morsecode += " "
-
-    # print(bits_morsecode)
+    print(bits_morsecode)
 
 
-decode_bits("11001100110011000000110000001111110011001111110011111100000000000000000000011001111110011111100111111000000110011001111110000001111110011001100000011")
+decode_bits("1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011")
 
 
 # def decode_morse(morse):
