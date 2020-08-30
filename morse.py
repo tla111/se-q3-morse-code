@@ -12,7 +12,8 @@ Pause between words – is 7 time units long.
 from morse_dict import MORSE_2_ASCII
 __author__ = """ Timothy La (tla111)
 Received help from John W
-Received help from Howard
+For decode_bits(), worked with Howard,
+Jasmyine, & Bethsheba in Study Hall
 """
 
 
