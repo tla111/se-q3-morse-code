@@ -1,42 +1,33 @@
-from morse_dict import MORSE_2_ASCII
-
-# Referenced https://www.geeksforgeeks.org/largest-substring-with-same-characters/
-
-
 def decode_bits(bits):
-    bits_morsecode = ""
-    highest, frequency = 1, 1
-    for occur in range(1, len(bits)):
-        if bits[occur] == bits[occur - 1]:
-            frequency += 1
-        else:
-            highest = max(highest, frequency)
-            frequency = 1
-    highest = max(highest, frequency)
-    freq = highest // 7
+    # Splits the bits
+    bits = bits.strip("0")
+    # strip() - takes away character from first & end of string
+    # 1. Executes Middle
+    # "120011110013001"
+    # testing = bits.split("0")
+    # testing1 = bits.split("1")
+    # print(testing)
+    # print(testing1)
+    step1 = [(bit) for bit in bits.split("1") + bits.split("0")]
+    print(step1)
+    step2 = [len(bit) for bit in bits.split("1") + bits.split("0")if bit]
+    # If bit does not exist, do not return in list
+    print(step2)
+    step3 = min([len(bit) for bit in bits.split("1") + bits.split("0")if bit])
+    print(step3)
+    # print(bits)
+    # for bit in bits.split("1") + bits.split("0"):
+    #     if bit:
+    #         print(bit)
+    # bits_morsecode = bits.replace(
+    #     "111" * freq, "-").replace(
+    #         "1" * freq, ".").replace(
+    #             "0000000" * freq, "   ").replace(
+    #                 "000" * freq, " ").replace(
+    #                     "0" * freq, "")
 
-    for x in range(len(bits)):
-        if bits[x:x + (3 * freq)] == "111" * freq:
-            bits_morsecode += "-"
-        elif bits[x] == "1":
-            bits_morsecode += "."
-        elif bits[x] == "0":
-            bits_morsecode += " "
-
-    print(bits_morsecode)
-
-
-decode_bits("1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011")
-
-
-# def decode_morse(morse):
-#     MORSE_2_ASCII[""] = " "
-#     result = ""
-#     turn_string_to_list = morse.split(" ")
-#     for letter in turn_string_to_list:
-#         result += MORSE_2_ASCII[letter]
-#     print(" ".join(result.split()))
-#     return " ".join(result.split())
+    # return bits_morsecode.strip()
 
 
-# decode_morse(".... . -.--   .--- ..- -.. .")
+decode_bits("120011110013001")
+# decode_bits("1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011")
